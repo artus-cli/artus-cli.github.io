@@ -33,12 +33,8 @@ export default defineConfig({
         ],
       },
       {
-        text: '插件',
-        items: [
-          { text: 'plugin-help', link: 'https://github.com/artus-cli/plugin-help' },
-          { text: 'plugin-version', link: 'https://github.com/artus-cli/plugin-version' },
-          { text: 'plugin-autocomplete', link: 'https://github.com/artus-cli/plugin-autocomplete' },
-        ],
+        text: '插件列表',
+        link: '/plugins/index',
       },
     ],
   },
