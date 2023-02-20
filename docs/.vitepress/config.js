@@ -12,7 +12,7 @@ export default defineConfig({
     nav: [
       { text: 'QuickStart', link: '/guide/quickstart' },
       { text: 'Plugins', link: '/plugins/index' },
-      { text: 'Changelog', link: 'https://github.com/artus-cli/artus-cli' },
+      { text: 'Changelog', link: 'https://github.com/artus-cli/artus-cli/blob/master/CHANGELOG.md' },
     ],
     sidebar: [
       {
