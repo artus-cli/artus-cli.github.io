@@ -23,13 +23,13 @@ export default defineConfig({
         ],
       },
       {
-        text: '高级功能',
+        text: '高级用法',
         items: [
-          { text: '插件机制', link: '/advance/plugin.md' },
-          { text: '框架继承', link: '/advance/inherit.md' },
+          { text: '指令', link: '/advance/command.md' },
           { text: '多环境', link: '/advance/env.md' },
-          { text: '高级指令', link: '/advance/inject.md' },
-          { text: 'Program & Util', link: '/advance/class.md' },
+          { text: '插件机制', link: '/advance/plugin.md' },
+          { text: '框架继承', link: '/advance/framework.md' },
+          { text: 'Program & Util', link: '/advance/program_util.md' },
         ],
       },
       {

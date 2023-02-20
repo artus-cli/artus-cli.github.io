@@ -133,5 +133,5 @@ $ npx ts-node index.js
 
 ---
 
-点击 [这篇文章](./guide) 了解进一步使用
+点击 [快速开始](./quickstart) 开始学习如何使用
 

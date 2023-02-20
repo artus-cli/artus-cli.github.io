@@ -560,12 +560,14 @@ dev postrun 1           # --> DevCommand>run_middleware
 - 另一种是绑定在 `run` 函数的中间件，当在 DebugCommand 的 `run` 函数中调用 `super.run` 的时候，就会执行 Dev 的 `run` 函数中间件。
   - 所以如果不想触发 Dev 的 `run` 函数中间件，不调用 `super.run` 即可 ...
 
-## 高级功能
+## 高级用法
 
-- [插件机制](../advance/plugin.md)
-- [框架继承](../advance/inherit.md)
+更多高级用法可以看以下几篇文档
+
+- [指令](../advance/command.md)
 - [多环境](../advance/env.md)
-- [高级指令](../advance/inject.md)
+- [插件机制](../advance/plugin.md)
+- [框架继承](../advance/framework.md)
 - [Program & Util](../advance/class.md)
 
 ## Examples

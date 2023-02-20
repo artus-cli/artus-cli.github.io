@@ -1,25 +1,82 @@
 
 # 插件机制
 
-## 如何定义插件
+插件能力由 artus 提供，定义方式也一致
 
-插件的机制跟定义跟 artus 的插件一样的，当插件中通过 `DefineCommand` 定义了指令，也会自动被加载，所以插件可以做的很强大且方便，可以用来拓展指令，也可以用来全局拦截，甚至能够用来覆盖已有指令。
+## 使用插件
 
-插件的实现，可以参考 examples 中的插件例子
-
-- [plugin-help](https://github.com/artus-cli/artus-cli/blob/master/src/plugins/plugin-help/index.ts)：内置的 --help 插件
-- [plugin-version](https://github.com/artus-cli/artus-cli/blob/master/src/plugins/plugin-version/index.ts)：内置的 --version 插件
-- [plugins/plugin-codegen](https://github.com/artus-cli/examples/tree/master/plugins/plugin-codegen)：新增 codegen 单独指令的 demo
-- [plugins/plugin-codegen-extra](https://github.com/artus-cli/examples/tree/master/plugins/plugin-codegen-extra)：拓展 codegen 指令的 demo
-
-## 配置及开启插件
+只需要在 `config/plugin.ts` 中写上开关配置即可
 
 ```typescript
 // config/plugin.ts
 export default {
+  "你要用的插件名": {
+    enable: true, // 开启插件
+    package: '插件的包名',
+  },
+
+  // 也可以关闭内置插件
   help: {
-    enable: true,
-    package: 'plugin-help',
+    enable: false,
   },
 };
 ```
+
+## 自定义插件
+
+### 初始化
+
+只需要三步
+
+- 创建一个 TS 项目；
+- 根目录下创建一个 `meta.json` 文件，并写入 `{ "name": "你的插件名称" }`；
+  - 注意：插件简写名称为开启插件时的 key 名，不能带特殊字符；
+- 创建一个指令 `MyCommand.ts`，并通过 `DefineCommand` 声明指令。
+
+这样你的一个 artus-cli 插件就定义好了。
+
+### 定义插件配置
+
+如果需要定义一些可以给用户配置的配置，只需要在插件中新建 `config/config.default.ts` 文件，然后编写配置
+
+```ts
+// config/config.default.ts
+
+export default {
+  // 命名最好跟插件名称保持一致
+  myCommandConfig: {
+    // 你的配置
+  },
+},
+```
+
+在插件中的指令中可以通过 inject config 使用配置
+
+```ts
+// MyCommand.ts
+import { ArtusInjectEnum } from '@artus-cli/@artus-cli';
+import myConfig from './config/config.default.ts';
+
+// test command
+@DefineCommand({
+  command: 'my',
+})
+export class MyCommand extends Command {
+  @Inject(ArtusInjectEnum.CONFIG)
+  config: typeof myConfig;
+
+  async run() {
+    console.info(this.config.myCommandConfig);
+  }
+}
+```
+
+插件中通过 `DefineCommand` 定义的指令会被自动加载，所以插件可以做的很强大且方便，不仅限于用来拓展指令，也可以用来全局拦截，甚至能够用来覆盖已有指令。
+
+### 插件例子
+
+插件的实现，还可以参考以下插件例子，会持续更新 demo
+
+- [plugin-help](https://github.com/artus-cli/plugin-help)：内置的 --help 插件
+- [plugin-version](https://github.com/artus-cli/plugin-version)：内置的 --version 插件
+- [更多插件例子](https://github.com/artus-cli/examples/tree/master/plugins)
