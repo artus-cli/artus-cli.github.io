@@ -7,6 +7,7 @@ export default defineConfig({
     label: 'Chinese',
     lang: 'cn',
   },
+  base: '/',
   themeConfig: {
     outline: 'deep',
     nav: [
