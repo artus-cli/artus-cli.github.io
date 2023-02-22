@@ -1,0 +1,19 @@
+# 插件列表
+
+## 内置插件
+
+### plugin-help
+
+提供 `--help` 功能，[使用文档](https://github.com/artus-cli/plugin-help)
+
+### plugin-version
+
+提供 `--version` 功能，[使用文档](https://github.com/artus-cli/plugin-version)
+
+
+## 其他插件
+
+### plugin-autocomplete
+
+提供 `zsh/bash` 下自动提示指令功能，[使用文档](https://github.com/artus-cli/plugin-autocomplete)
+

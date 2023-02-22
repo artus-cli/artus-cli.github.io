@@ -1,0 +1,30 @@
+{
+  "name": "artus-cli.github.io",
+  "version": "1.0.0",
+  "description": "artus-cli docs",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artus-cli/artus-cli.github.io.git"
+  },
+  "keywords": [
+    "artus-cli"
+  ],
+  "author": "whxaxes <whxaxes@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/artus-cli/artus-cli.github.io/issues"
+  },
+  "homepage": "https://github.com/artus-cli/artus-cli.github.io#readme",
+  "devDependencies": {
+    "@artus/eslint-config-artus": "^0.0.1",
+    "eslint": "^8.34.0",
+    "vitepress": "^1.0.0-alpha.46",
+    "vue": "^3.2.47"
+  }
+}
