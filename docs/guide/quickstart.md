@@ -568,7 +568,7 @@ dev postrun 1           # --> DevCommand>run_middleware
 - [多环境](../advance/env.md)
 - [插件机制](../advance/plugin.md)
 - [框架继承](../advance/framework.md)
-- [Program & Util](../advance/class.md)
+- [Program & Util](../advance/program_util.md)
 
 ## Examples
 
