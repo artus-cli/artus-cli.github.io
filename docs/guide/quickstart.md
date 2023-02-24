@@ -44,7 +44,7 @@ CLI 的可执行文件，只要引入 `@artus-cli/artus-cli` 的 `start` 方法�
 
 import { start } from '@artus-cli/artus-cli';
 
-start({ baseDir: __dirname });
+start();
 ```
 
 ## 定义指令
@@ -346,7 +346,7 @@ export default class UsageLifecycle implements ApplicationLifecycle {
 }
 ```
 
-> 使用场景：比如 [plugin-help](https://github.com/artus-cli/artus-cli/tree/master/src/plugins/plugin-help) 中就通过中间件拦截了 `--help` 和 `-h` 的输入，然后重定向到 help 指令。
+> 使用场景：比如 [plugin-help](https://github.com/artus-cli/plugin-help) 中就通过中间件拦截了 `--help` 和 `-h` 的输入，然后重定向到 help 指令。
 
 ### 指令中间件
 

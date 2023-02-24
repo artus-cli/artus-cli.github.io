@@ -36,8 +36,6 @@ export default {
 
 import { start } from '@artus-cli/artus-cli';
 
-start({
-  baseDir: __dirname,
-  artusEnv: 'prod', // 可以在这里传环境
-});
+// 可以在这里传环境
+start({ artusEnv: 'prod' });
 ```

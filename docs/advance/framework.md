@@ -9,7 +9,7 @@
 ```json
 // meta.json
 {
-  "name": "你的框架名称"
+  "name": "your framework name"
 }
 ```
 

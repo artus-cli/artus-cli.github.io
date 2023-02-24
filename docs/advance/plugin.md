@@ -10,9 +10,9 @@
 ```typescript
 // config/plugin.ts
 export default {
-  "你要用的插件名": {
+  pluginName: {
     enable: true, // 开启插件
-    package: '插件的包名',
+    package: 'plugin-package-name',
   },
 
   // 也可以关闭内置插件
@@ -44,7 +44,7 @@ export default {
 
 export default {
   // 命名最好跟插件名称保持一致
-  myCommandConfig: {
+  myPluginName: {
     // 你的配置
   },
 },
@@ -66,7 +66,7 @@ export class MyCommand extends Command {
   config: typeof myConfig;
 
   async run() {
-    console.info(this.config.myCommandConfig);
+    console.info(this.config.myPluginName);
   }
 }
 ```
