@@ -80,7 +80,7 @@ export default class VersionLifecycle implements ApplicationLifecycle {
 - `useInCommand`   注册指令中间件（ 通过 program 注册到 command 的中间件不会被继承 ）
 - `useInExecution`   注册 run 函数中间件
 
-### Utils
+## Utils
 
 Utils 是框架提供的在 Execution 阶段使用的工具类，可以用于中间件或者在指令中注入并使用。提供了两个方法：
 
@@ -88,3 +88,70 @@ Utils 是框架提供的在 Execution 阶段使用的工具类，可以用于中
 - `forward(clz: typeof Command, args?: T)` 转发指令，入参是指令类，也可以传入参数（ 如果传了会覆盖已有解析出来的参数 ）。
   - 跟 redirect 的差异：在当前 pipeline 触发（ 即不会触发 pipeline middleware ），而 redirect 会新建 pipeline。
 
+### 重定向
+
+使用方式如下
+
+```typescript
+import { DefineCommand, Command, Utils } from '@artus-cli/artus-cli';
+
+// test command
+@DefineCommand({
+  command: 'test',
+})
+export class TestCommand extends Command {
+  async run() {
+    console.info('test');
+  }
+}
+
+// coverage command
+@DefineCommand({
+  command: 'cov',
+})
+export class CovCommand extends Command {
+  @Inject()
+  utils: Utils;
+
+  async run() {
+    console.info('coverage');
+
+    // 参数格式跟 process.argv 一致，也可以写 flags 
+    return this.utils.redirect([ 'test' ]);
+  }
+}
+```
+
+
+### 转发
+
+由于 forward 不会新建 pipeline，不会再解析 argv，所以传入的参数要求是转发的 Command 和已经解析好的 args ，使用方式如下
+
+> 使用场景是在想在同个上下文中（ 同样的 args 解析结果 ），直接转发到其他指令，要求这两个指令的 Options 是兼容的。
+
+```ts
+import { DefineCommand, Command, Utils } from '@artus-cli/artus-cli';
+
+// test command
+@DefineCommand({
+  command: 'test',
+})
+export class TestCommand extends Command {
+  async run() {
+    console.info('test', this.file);
+  }
+}
+
+// coverage command
+@DefineCommand({
+  command: 'cov',
+})
+export class CovCommand extends Command {
+  @Inject()
+  utils: Utils;
+
+  async run() {
+    return this.utils.forward(TestCommand);
+  }
+}
+```

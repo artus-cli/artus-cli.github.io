@@ -39,7 +39,7 @@ export class CovCommand extends Command {
 比如上面的注入指令的例子，可以直接用重定向的方式
 
 ```typescript
-import { DefineCommand, Command, Helper } from '@artus-cli/artus-cli';
+import { DefineCommand, Command, Utils } from '@artus-cli/artus-cli';
 
 // test command
 @DefineCommand({
@@ -57,13 +57,13 @@ export class TestCommand extends Command {
 })
 export class CovCommand extends Command {
   @Inject()
-  helper: Helper;
+  utils: Utils;
 
   async run() {
     console.info('coverage');
 
     // 参数格式跟 process.argv 一致，也可以写 flags 
-    return this.helper.redirect([ 'test' ]);
+    return this.utils.redirect([ 'test' ]);
   }
 }
 ```
