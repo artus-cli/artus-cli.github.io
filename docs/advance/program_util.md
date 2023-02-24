@@ -125,7 +125,9 @@ export class CovCommand extends Command {
 
 ### 转发
 
-跟 redirect 不一样，forward 会跳过参数的解析，所以传入的参数要求是转发的 Command 和已经解析的 args ，使用方式如下
+由于 forward 不会新建 pipeline，不会再解析 argv，所以传入的参数要求是转发的 Command 和已经解析好的 args ，使用方式如下
+
+> 使用场景是在想在同个上下文中（ 同样的 args 解析结果 ），直接转发到其他指令，要求这两个指令的 Options 是兼容的。
 
 ```ts
 import { DefineCommand, Command, Utils } from '@artus-cli/artus-cli';
@@ -136,7 +138,7 @@ import { DefineCommand, Command, Utils } from '@artus-cli/artus-cli';
 })
 export class TestCommand extends Command {
   async run() {
-    console.info('test');
+    console.info('test', this.file);
   }
 }
 
@@ -149,7 +151,7 @@ export class CovCommand extends Command {
   utils: Utils;
 
   async run() {
-    return this.utils.forward(TestCommand, { /* 这里是已经解析好的 args 对象 */ });
+    return this.utils.forward(TestCommand);
   }
 }
 ```
