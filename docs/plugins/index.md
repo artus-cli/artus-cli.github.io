@@ -13,6 +13,10 @@
 
 ## 其他插件
 
+### plugin-npmcheckupdate
+
+自动检查版本更新，[使用文档](https://github.com/artus-cli/plugin-npmcheckupdate)
+
 ### plugin-autocomplete
 
 提供 `zsh/bash` 下自动提示指令功能，[使用文档](https://github.com/artus-cli/plugin-autocomplete)
