@@ -110,7 +110,9 @@ export class MyCommand extends Command {
 import { DefineCommand, Option, Command } from '@artus-cli/artus-cli';
 
 @DefineCommand({
-  command: 'my-bin [baseDir]',
+  // $0 代表指令名的占位符，建议统一用 $0
+  // 这里的几种写法：'my-bin [baseDir]' 或者 '$0 [baseDir]' 再或者 '[baseDir]' 效果是一样的
+  command: '$0 [baseDir]',
   description: 'My First Bin'
 })
 export class MyCommand extends Command {
@@ -208,7 +210,7 @@ export class MyTestCommand extends Command {
 
 ```typescript
 @DefineCommand({
-  command: 'my-bin module',
+  command: 'module',
   description: 'Module Commands',
 })
 export class ModuleMainCommand extends Command {
