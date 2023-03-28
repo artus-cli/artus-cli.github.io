@@ -122,7 +122,7 @@ export class MyCommand extends Command {
   }
 }
 
-start();
+start({ binName: 'my-bin' });
 ```
 
 执行代码

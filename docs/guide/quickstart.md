@@ -40,11 +40,20 @@ egg-bin
 CLI 的可执行文件，只要引入 `@artus-cli/artus-cli` 的 `start` 方法并且执行即可，一般定义在项目的 bin 目录中。
 
 ```typescript
+// bin/cli.ts
 #!/usr/bin/env node
 
 import { start } from '@artus-cli/artus-cli';
 
-start();
+start({
+  // 你的 bin 名称，没传默认是 package.json 里的 name
+  // 如果 bin 中有配置也会默认选 bin 配置中的第一个
+  binName: 'my-bin',
+
+  // 指令所在目录，比如代码目录在项目根目录下的 src 目录，cli.ts 在 src/bin/ 中，那么就可以配 path.dirname(__dirname)
+  // 如果不配，会自动找 package.json 所在目录
+  // baseDir: path.dirname(__dirname),
+});
 ```
 
 ## 定义指令
