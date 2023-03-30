@@ -2,36 +2,6 @@
 
 指令除了前面说的常规用法之外，还有一些高级用法。
 
-## 指令注入
-
-`DefineCommand` 内部对 `Injectable` 做了包装，所以定义的指令也可以直接注入到其他指令中执行，比如
-
-```typescript
-// test command
-@DefineCommand({
-  command: 'test',
-})
-export class TestCommand extends Command {
-  async run() {
-    console.info('test');
-  }
-}
-
-// coverage command
-@DefineCommand({
-  command: 'cov',
-})
-export class CovCommand extends Command {
-  @Inject()
-  testCommand: TestCommand;
-
-  async run() {
-    console.info('coverage');
-    return this.testCommand.run();
-  }
-}
-```
-
 ## 指令重定向
 
 存在一种场景需要对指令做重定向（ 即更改执行指令 ），框架提供了 `Utils` 类（ 下文有详细介绍 ），其中具备一些实用的工具函数。
