@@ -94,7 +94,7 @@ export class MyCommand extends Command {
   port: number;
 
   async run() {
-    console.info('Run with port', this.option.port);
+    console.info('Run with port', this.port);
   }
 }
 ```
