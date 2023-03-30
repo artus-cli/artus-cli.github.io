@@ -470,7 +470,7 @@ export class DevCommand extends Command {
   port: number;
 
   async run() {
-    console.info('Run In', this.options.port);
+    console.info('Run In', this.port);
   }
 }
 
@@ -487,7 +487,7 @@ export class DebugCommand extends DevCommand {
 
   async run() {
     super.run();
-    console.info('Debug In', this.options.inspectPort);
+    console.info('Debug In', this.inspectPort);
   }
 }
 ```
