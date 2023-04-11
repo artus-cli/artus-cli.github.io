@@ -87,8 +87,11 @@ import { DefineCommand, Option, Command } from '@artus-cli/artus-cli';
 @DefineCommand()
 export class MyCommand extends Command {
   @Option({
+    // flag 别名，比如 -p
     alias: 'p',
+    // flag 默认值
     default: 3000,
+    // flag 描述，会打印在 -h 信息中
     description: 'port'
   })
   port: number;
@@ -113,7 +116,15 @@ import { DefineCommand, Option, Command } from '@artus-cli/artus-cli';
   // $0 代表指令名的占位符，建议统一用 $0
   // 这里的几种写法：'my-bin [baseDir]' 或者 '$0 [baseDir]' 再或者 '[baseDir]' 效果是一样的
   command: '$0 [baseDir]',
-  description: 'My First Bin'
+
+  // 指令描述，非必需，会打印在 -h 信息中
+  description: 'My First Bin',
+
+  // 指令使用示例，非必须，会打印在 -h 信息中
+  examples: [
+    // 第一个参数是指令例子，第二个参数是对当前指令例子的注释（ 格式 yargs 的规范一致 ），其中 `$0` 会被自动替换成指令名
+    [ '$0 ./', 'Run in base dir' ],
+  ],
 })
 export class MyCommand extends Command {
   @Option({
@@ -122,7 +133,7 @@ export class MyCommand extends Command {
     description: 'port'
   })
   port: number;
-  
+
   @Option()
   baseDir: string;
 

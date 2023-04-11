@@ -1,6 +1,35 @@
 # 指令
 
-指令除了前面说的常规用法之外，还有一些高级用法。
+指令除了前面说的常规用法之外，还有一些高级技巧。
+
+## 元数据继承
+
+指令在使用 OO 的方式继承其他指令的时候，也会继承其他指令的所有配置信息（ 包括 `Option`、`Middleware` ），这个跟一般 IoC 的类设计不太一致（ 大部分是不会做继承元数据这么个操作的 ），指令之所以这样做，主要是因为指令的 Option 配置会比较多，如果不支持继承重复写的成本很高。
+
+所以 artus-cli 默认开启了指令元数据继承的功能，如果不想使用元数据继承，也可以通过 `inheritMetadata` 配置关闭：
+
+```ts
+// config/config.default.ts
+export default {
+  inheritMetadata: false
+}
+```
+
+也可以只对指定的指令关闭
+
+```ts
+import { DefineCommand, Command, Utils } from '@artus-cli/artus-cli';
+
+// test command
+@DefineCommand({
+  command: 'test',
+}, { inheritMetadata: false })
+export class TestCommand extends Command {
+  async run() {
+    console.info('test');
+  }
+}
+```
 
 ## 指令重定向
 
