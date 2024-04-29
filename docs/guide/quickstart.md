@@ -28,7 +28,7 @@ egg-bin
 │   ├── main.ts
 │   └── test.ts
 ├── config
-│   ├── framework.ts
+│   ├── config.ts
 │   └── plugin.ts
 ├── index.ts
 ├── meta.json
