@@ -9,20 +9,23 @@
 ```json
 // meta.json
 {
-  "name": "your framework name"
+  "name": "your cli name"
 }
 ```
 
 ## 如何使用
 
-在 `config/framework.ts` 中定义需要继承的 CLI 即可。
+然后在 `config/plugin.ts` 中将需要继承的 CLI 当成插件引入并且开启即可。
 
 
 ```typescript
-// config/framework.ts
+// config/plugin.ts
 
 export default {
-  package: 'your-cli-name'
+  yourCli: {
+    enable: true,
+    package: 'your-cli-name',
+  }
 }
 ```
 
