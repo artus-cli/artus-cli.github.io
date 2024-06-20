@@ -601,8 +601,8 @@ dev postrun 1           # --> DevCommand>run_middleware
 - [egg-bin](https://github.com/artus-cli/examples/tree/master/egg-bin)：类似于 egg-bin 的 demo
 - [chair-bin](https://github.com/artus-cli/examples/tree/master/chair-bin)：继承 egg-bin 的 demo
 - [override-bin](https://github.com/artus-cli/examples/tree/master/override-bin)：继承 egg-bin 并覆盖指令的 demo
-- [plugin-help](https://github.com/artus-cli/artus-cli/blob/master/src/plugins/plugin-help/index.ts)：内置的 --help 插件
-- [plugin-version](https://github.com/artus-cli/artus-cli/blob/master/src/plugins/plugin-version/index.ts)：内置的 --version 插件
+- [plugin-help](https://github.com/artus-cli/plugin-help)：内置的 --help 插件
+- [plugin-version](https://github.com/artus-cli/plugin-version)：内置的 --version 插件
 - [plugins/plugin-check-update](https://github.com/artus-cli/examples/blob/master/plugins/plugin-check-update)：检查 bin 更新 demo
 - [plugins/plugin-codegen](https://github.com/artus-cli/examples/tree/master/plugins/plugin-codegen)：新增 codegen 单独指令的 demo
 - [plugins/plugin-codegen-extra](https://github.com/artus-cli/examples/tree/master/plugins/plugin-codegen-extra)：拓展 codegen 指令的 demo
